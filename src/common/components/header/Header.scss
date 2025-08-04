@@ -1,0 +1,41 @@
+@use '../../styles/mixins' as *;
+
+.header {
+  @include flex-between;
+  height: 32px;
+  background-color: var(--primary-bg);
+  padding: 0 var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+
+  &-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-xs);
+    color: var(--text-primary);
+  }
+
+  &-controls {
+    display: flex;
+    gap: var(--spacing-xs);
+  }
+
+  &-control {
+    @include button-base;
+    @include flex-center;
+    width: 32px;
+    height: 24px;
+    font-size: var(--font-size-xs);
+    border-radius: 4px;
+    color: var(--text-primary);
+
+    @include hover-effect(var(--hover-bg));
+
+    &-close {
+      &:hover {
+        background-color: var(--close-hover);
+        color: white;
+      }
+    }
+  }
+}
