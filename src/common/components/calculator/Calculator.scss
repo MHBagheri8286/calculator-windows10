@@ -1,0 +1,87 @@
+@use '../../styles/mixins' as *;
+
+.calculator {
+  width: 100%;
+  max-width: 400px;
+  min-width: 320px;
+  background-color: var(--primary-bg);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  font-family: var(--font-family);
+  margin: 0 auto;
+
+  &-toolbar {
+    @include flex-between;
+    height: 40px;
+    padding: 0 var(--spacing-md);
+    background-color: var(--primary-bg);
+
+    &-left {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+
+    &-btn {
+      @include button-base;
+      @include flex-center;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      color: var(--text-primary);
+      font-size: var(--font-size-sm);
+
+      @include hover-effect(var(--hover-bg));
+    }
+  }
+
+  &-mode {
+    font-size: var(--font-size-md);
+    font-weight: 400;
+    letter-spacing: var(--letter-spacing);
+    color: var(--text-primary);
+
+    &-highlight {
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+    }
+  }
+
+  &-memory {
+    display: flex;
+    background-color: var(--primary-bg);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+
+    &-btn {
+      @include button-base;
+      @include flex-center;
+      flex: 1;
+      height: 40px;
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      color: var(--text-primary);
+      background-color: var(--primary-bg);
+
+      @include hover-effect(var(--hover-bg));
+
+      &--disabled {
+        color: var(--text-disabled);
+        cursor: default;
+
+        &:hover {
+          background-color: var(--primary-bg);
+        }
+      }
+    }
+  }
+
+  &-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: var(--primary-bg);
+    gap: 1px;
+    padding: 1px;
+  }
+}
