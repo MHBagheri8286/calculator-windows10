@@ -11,7 +11,11 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,scss,css}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,scss,css}\"",
     "type-check": "tsc --noEmit",
-    "clean": "rm -rf dist node_modules/.vite"
+    "clean": "rm -rf dist node_modules/.vite",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "react": "^19.1.0",
