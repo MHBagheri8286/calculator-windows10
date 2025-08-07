@@ -1,16 +1,16 @@
-import { MAX_DIGITS } from "@constants/calculator";
-import type { OperationType } from "@models/calculator";
+import { MAX_DIGITS } from '@constants/calculator';
+import type { OperationType } from '@models/calculator';
 
 export const formatNumber = (num: number): string => {
   const str = num.toString();
   if (str.length <= MAX_DIGITS) {
-    return new Intl.NumberFormat("en-US").format(num);
+    return new Intl.NumberFormat('en-US').format(num);
   }
   return num.toExponential(8);
 };
 
 export const parseFormattedNumber = (str: string): number => {
-  return parseFloat(str.replace(/,/g, ""));
+  return parseFloat(str.replace(/,/g, ''));
 };
 
 export const calculate = (
@@ -19,15 +19,15 @@ export const calculate = (
   operation: OperationType
 ): number => {
   switch (operation) {
-    case "+":
+    case '+':
       return firstOperand + secondOperand;
-    case "-":
+    case '-':
       return firstOperand - secondOperand;
-    case "*":
+    case '*':
       return firstOperand * secondOperand;
-    case "/":
+    case '/':
       if (secondOperand === 0) {
-        throw new Error("Cannot divide by zero");
+        throw new Error('Cannot divide by zero');
       }
       return firstOperand / secondOperand;
     default:
@@ -37,24 +37,26 @@ export const calculate = (
 
 export const performFunction = (value: number, func: string): number => {
   switch (func) {
-    case "sqrt":
+    case 'sqrt':
       if (value < 0) {
-        throw new Error("Invalid input");
+        throw new Error('Invalid input');
       }
       return Math.sqrt(value);
-    case "sqr":
+    case 'sqr':
       return Math.pow(value, 2);
-    case "cube":
+    case 'cube':
       return Math.pow(value, 3);
-    case "fraction":
+    case 'fraction':
       if (value === 0) {
-        throw new Error("Cannot divide by zero");
+        throw new Error('Cannot divide by zero');
       }
       return 1 / value;
-    case "percentage":
+    case 'percentage':
       return value / 100;
-    case "negate":
-      return -value;
+    case 'negate': {
+      const negated = -value;
+      return negated === 0 ? 0 : negated;
+    }
     default:
       return value;
   }
